@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiran Ramesh</title>
+    <meta name="description"
+        content="Portfolio of Hiran Ramesh, a passionate Designer crafting beautiful and functional digital experiences.">
+    <meta name="theme-color" content="#f0ede8">
+    <meta property="og:title" content="Hiran Ramesh | Designer Portfolio">
+    <meta property="og:description"
+        content="Portfolio of Hiran Ramesh, a passionate Designer crafting beautiful digital experiences.">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Performance Optimization: Preload Critical Above-The-Fold Assets -->
+    <link rel="preload" as="image" href="hero 2.png" fetchpriority="high">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <!-- Theme Initialization (Prevents flash of wrong theme) -->
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('portfolio-theme');
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+
+<body>
+    <div class="cursor-dot" data-cursor-dot></div>
+    <div class="cursor-outline" data-cursor-outline></div>
+
+    <!-- Hero Navbar -->
+    <nav class="hero-navbar">
+        <div class="hero-nav-inner">
+            <a href="#" class="logo">HR<span>.</span></a>
+            <ul class="hero-nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#works">Works</a></li>
+                <li><a href="resume.html" class="resume-btn">Resume</a></li>
+            </ul>
+            <div class="nav-right-actions">
+                <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <button class="hamburger" aria-label="Toggle navigation menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+
+
+            <!-- Morphing SVG blobs — image revealed through blob shapes -->
+            <svg id="hero-blob-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice"
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true">
+                <defs>
+                    <filter id="goo-filter" x="-40%" y="-40%" width="180%" height="180%">
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="24" result="blur" />
+                        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0
+                                    0 1 0 0 0
+                                    0 0 1 0 0
+                                    0 0 0 28 -12" />
+                    </filter>
+                    <!-- Mask: white blobs on black = image visible only through blobs -->
+                    <mask id="hero-blob-mask">
+                        <rect width="100%" height="100%" fill="black" />
+                        <g filter="url(#goo-filter)">
+                            <path id="hero-mask-a" fill="white" />
+                            <path id="hero-mask-b" fill="white" />
+                            <path id="hero-mask-c" fill="white" />
+                            <path id="hero-mask-d" fill="white" />
+                            <path id="hero-mask-e" fill="white" />
+                            <path id="hero-mask-f" fill="white" />
+                            <path id="hero-mask-g" fill="white" />
+                            <path id="hero-mask-h" fill="white" />
+                            <path id="hero-mask-i" fill="white" />
+                            <path id="hero-mask-j" fill="white" />
+                            <path id="hero-mask-k" fill="white" />
+                            <path id="hero-mask-l" fill="white" />
+                        </g>
+                    </mask>
+                </defs>
+
+                <!-- Background image — only visible through the blob mask -->
+                <image href="hero 2.png"
+                    x="0" y="0" width="1440" height="900"
+                    preserveAspectRatio="xMidYMid slice"
+                    mask="url(#hero-blob-mask)" />
+            </svg>
+
+            <!-- Massive center typography -->
+            <div class="hero-text-block">
+                <div class="hero-eyebrow fade-up" data-magnetic>Hello, I am</div>
+                <h1 class="hero-name fade-up" data-magnetic style="animation-delay:0.1s;">HIRAN</h1>
+                <p class="hero-role fade-up" data-magnetic style="animation-delay:0.2s;">Creative Designer &amp;
+                    Innovator</p>
+                <p class="hero-desc fade-up" data-magnetic style="animation-delay:0.3s;">
+                    I craft digital experiences with a blend of creativity, logic,<br>and a passion for human-centric
+                    design.
+                </p>
+                <div class="hero-cta-wrap fade-up" data-magnetic style="animation-delay:0.4s;">
+                    <a href="#works" class="hero-cta-btn">View My Work <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Bottom info bar -->
+            <div class="hero-bottom-bar">
+                <div class="hero-news">
+                    <span class="news-dot"></span>
+                    <span class="news-label">Latest update:</span>
+                    <span class="news-text">Available for freelance &amp; collaborations — let's create something
+                        great.</span>
+                </div>
+                <div class="hero-social-bar">
+                    <a href="https://www.behance.net/hiranramesh1" target="_blank" rel="noopener noreferrer"
+                        aria-label="Behance">Behance</a>
+                    <a href="https://www.linkedin.com/in/hiran-ramesh-b603812b6?utm_source=share_via&utm_content=profile&utm_medium=member_ios-linkedin"
+                        target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a>
+                    <a href="https://www.instagram.com/hiran_r_7?igsh=ZmttM2VwenZwdDdz&utm_source=qr-instagram"
+                        target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- About Section -->
+        <section class="about section-padding" id="about">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">About <span>Me</span></h2>
+                    <p class="section-subtitle">My Details & Expertise</p>
+                </div>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>
+                            I'm Hiran Ramesh, a passionate designer dedicated to creating beautiful, intuitive, and
+                            engaging visual solutions. With a keen eye for aesthetics and a problem-solving mindset, I
+                            transform complex ideas into elegant designs.
+                        </p>
+                        <p>
+                            My approach combines thorough research, strategic thinking, and pixel-perfect execution to
+                            ensure every project meets its goals while leaving a lasting impression.
+                        </p>
+                        
+                        <div class="about-cta-wrap fade-up" data-magnetic>
+                            <a href="about.html" class="about-cta-btn">Know More About Me <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <!-- Software Stickers -->
+                    <div class="adobe-stickers-container">
+                        <!-- Adobe -->
+                        <div class="adobe-sticker" style="top: -20px; right: 10%; transform: rotate(12deg);" data-sticker>
+                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="100" height="100" rx="22" fill="#001E36"/>
+                                <text x="50%" y="70%" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="52" fill="#31A8FF" text-anchor="middle">Ps</text>
+                            </svg>
+                        </div>
+                        <div class="adobe-sticker" style="bottom: 20%; left: -30px; transform: rotate(-8deg);" data-sticker>
+                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="100" height="100" rx="22" fill="#330000"/>
+                                <text x="50%" y="70%" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="52" fill="#FF9A00" text-anchor="middle">Ai</text>
+                            </svg>
+                        </div>
+                        <div class="adobe-sticker" style="bottom: -20px; right: 20%; transform: rotate(5deg);" data-sticker>
+                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="100" height="100" rx="22" fill="#00005C"/>
+                                <text x="50%" y="70%" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="52" fill="#EA77FF" text-anchor="middle">Pr</text>
+                            </svg>
+                        </div>
+                        <div class="adobe-sticker" style="top: 30%; right: -20px; transform: rotate(-15deg);" data-sticker>
+                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="100" height="100" rx="22" fill="#00005C"/>
+                                <text x="50%" y="70%" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="52" fill="#9999FF" text-anchor="middle">Ae</text>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Works / Portfolio Section -->
+        <section class="portfolio" id="works">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title"> <span>Works</span></h2>
+                </div>
+
+                <div class="portfolio-grid">
+                    <!-- Card 1 -->
+                    <a href="anxity.jpg" class="new-card lightbox-trigger">
+                        <div class="portfolio-img">
+                            <img src="Screenshot 2026-05-08 095633.png" alt="Anxiety Typeface Design" loading="lazy">
+                            <div class="card-overlay">
+                                <div class="card-text-container">
+                                    <h3 class="card-title">ANXIETY &bull; TYPEFACE DESIGN</h3>
+                                    <p class="card-desc">A study in typographic emotion—where letterforms distort and breathe.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Card 2 -->
+                    <a href="store design.jpg" class="new-card lightbox-trigger">
+                        <div class="portfolio-img">
+                            <img src="Screenshot 2026-05-10 003411.png" alt="Cubora Store Design" loading="lazy">
+                            <div class="card-overlay">
+                                <div class="card-text-container">
+                                    <h3 class="card-title">CUBORA &bull; STORE DESIGN</h3>
+                                    <p class="card-desc">A functional kids' store designed as a fun, safe, and joyful space for children.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Card 3 -->
+                    <a href="behance fx30.jpg" class="new-card lightbox-trigger">
+                        <div class="portfolio-img">
+                            <img src="Screenshot 2026-05-10 005025.png" alt="FX-30 3D Modeling" loading="lazy">
+                            <div class="card-overlay">
+                                <div class="card-text-container">
+                                    <h3 class="card-title">FX-30 &bull; 3D MODELING</h3>
+                                    <p class="card-desc">Detailed 3D model of the Sony FX30, showcasing its design and features.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Card 4 -->
+                    <a href="Chocochi.webp" class="new-card lightbox-trigger">
+                        <div class="portfolio-img">
+                            <img src="Chocochi thumbnail.webp" alt="Drop By Social App" loading="lazy">
+                            <div class="card-overlay">
+                                <div class="card-text-container">
+                                    <h3 class="card-title">CHOCOCHI &bull; PACKAGING design</h3>
+                                    <p class="card-desc">Packaging design created for Chocochi, a Kerala-based chocolate brand.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Card 5 -->
+                    <a href="nothing 4a.jpg" class="new-card lightbox-trigger">
+                        <div class="portfolio-img">
+                            <img src="nothing 4a thumbnail.jpg" alt="nothing" loading="lazy">
+                            <div class="card-overlay">
+                                <div class="card-text-container">
+                                    <h3 class="card-title">NOTHING 4a &bull; 3D MODELING</h3>
+                                    <p class="card-desc">Detailed 3D model of the Nothing Phone (4a), highlighting its distinctive design and features.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Card 6 -->
+                    <a href="new gen onam.webp" class="new-card lightbox-trigger">
+                        <div class="portfolio-img">
+                            <img src="new gen onam thumbnail.webp" alt="new gen onam" loading="lazy">
+                            <div class="card-overlay">
+                                <div class="card-text-container">
+                                    <h3 class="card-title">Oxygen &bull; NEWGEN Onam Campaign design</h3>
+                                    <p class="card-desc">Festive visuals, creative concepts, and vibrant designs for Oxygen New Gen Onam campaign.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Card 7 -->
+                    <a href="kmt onam.webp" class="new-card lightbox-trigger">
+                        <div class="portfolio-img">
+                            <img src="kmt onam thumbnail.webp" alt="Campaign design" loading="lazy">
+                            <div class="card-overlay">
+                                <div class="card-text-container">
+                                    <h3 class="card-title">KMT Silks &bull; Onam Campaign design</h3>
+                                    <p class="card-desc">Campaign visuals, creative direction, and festive storytelling for KMT Silks’ Onam campaign.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Card 8 -->
+                    <a href="Surabhi package.webp" class="new-card lightbox-trigger">
+                        <div class="portfolio-img">
+                            <img src="Surabhi package thumbnail.webp" alt="packaging" loading="lazy">
+                            <div class="card-overlay">
+                                <div class="card-text-container">
+                                    <h3 class="card-title">surabhi &bull; PACKAGING design</h3>
+                                    <p class="card-desc">Packaging design, brand identity, and visual storytelling for Surabhi Foods.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Card 9 -->
+                    <a href="glossery.jpg" class="new-card lightbox-trigger">
+                        <div class="portfolio-img">
+                            <img src="glossery thumbnail.png" alt="Packaging & Art Direction" loading="lazy">
+                            <div class="card-overlay">
+                                <div class="card-text-container">
+                                    <h3 class="card-title">What's that Style? &bull;Publication Design</h3>
+                                    <p class="card-desc">A visual guide to fashion terminology, with simple definitions and imagery.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Card 10 -->
+                    <a href="Blur.jpg" class="new-card lightbox-trigger">
+                        <div class="portfolio-img">
+                            <img src="work in progress.jpg" alt="Visual Communication" loading="lazy">
+                            <div class="card-overlay">
+                                <div class="card-text-container">
+                                    <h3 class="card-title">VISUAL &bull; COMMUNICATION</h3>
+                                    <p class="card-desc">Creative direction, conceptual storytelling, and dynamic imagery.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Card 11 -->
+                    <a href="Blur.jpg" class="new-card lightbox-trigger">
+                        <div class="portfolio-img">
+                            <img src="work in progress.jpg" alt="Exhibition & Spatial Design" loading="lazy">
+                            <div class="card-overlay">
+                                <div class="card-text-container">
+                                    <h3 class="card-title">SPATIAL &bull; DESIGN</h3>
+                                    <p class="card-desc">Spatial communication, environmental graphics, and installation design.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Card 12 -->
+                    <a href="Blur.jpg" class="new-card lightbox-trigger">
+                        <div class="portfolio-img">
+                            <img src="work in progress.jpg" alt="Creative Direction" loading="lazy">
+                            <div class="card-overlay">
+                                <div class="card-text-container">
+                                    <h3 class="card-title">CREATIVE &bull; DIRECTION</h3>
+                                    <p class="card-desc">Curated visual narratives, aesthetic framing, and human-centric expression.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-logo">HR<span>.</span></div>
+            <div class="footer-social">
+                <a href="https://www.instagram.com/hiran_r_7?igsh=ZmttM2VwenZwdDdz&utm_source=qr-instagram"
+                    target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i
+                        class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/hiran-ramesh-b603812b6?utm_source=share_via&utm_content=profile&utm_medium=member_ios-linkedin"
+                    target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i
+                        class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://www.behance.net/hiranramesh1" target="_blank" rel="noopener noreferrer"
+                    aria-label="Behance"><i class="fa-brands fa-behance"></i></a>
+            </div>
+            <div class="footer-email">
+                <a href="mailto:hiran5039ur7@gmail.com"><i class="fa-solid fa-envelope"></i> hiran5039ur7@gmail.com</a>
+            </div>
+            <p class="copyright">&copy; 2026 Hiran Ramesh. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+    <!-- Lightbox Overlay for Full Scrollable Image Showcase -->
+    <div class="lightbox-overlay" id="lightbox" data-lenis-prevent>
+        <div class="lightbox-content-wrap">
+            <button class="lightbox-close" id="lightboxClose" aria-label="Close image preview">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <img src="" id="lightboxImg" class="lightbox-img" alt="Project Preview">
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

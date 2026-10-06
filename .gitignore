@@ -1,0 +1,6 @@
+# Scratch / Helper scripts
+*.ps1
+
+# Temporary text extracts
+decompressed_pdf.txt
+pdf_text.txt

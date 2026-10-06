@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Hiran Ramesh | Designer &amp; Creative</title>
+    <meta name="description" content="Discover the story, creative vision, and photography of Hiran Ramesh, Fashion Communication Designer based in Kerala, India.">
+    <meta name="theme-color" content="#f0ede8">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Theme Initialization (Prevents flash of wrong theme) -->
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('portfolio-theme');
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+
+    <style>
+        /* ─────────────────────────────────────────────────────────────
+           ABOUT PAGE SPECIFIC STYLES
+           ───────────────────────────────────────────────────────────── */
+
+        .about-page-body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: var(--font-main);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Hero */
+        .about-hero {
+            padding: 140px 5% 70px;
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-pill-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(252, 163, 17, 0.14);
+            color: var(--primary-color);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            border: 1px solid rgba(252, 163, 17, 0.3);
+        }
+
+        .about-pill-tag i {
+            font-size: 0.85rem;
+            color: var(--primary-color);
+        }
+
+        .about-title {
+            font-size: clamp(2.8rem, 5.5vw, 4.8rem);
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+        }
+
+        .about-title span {
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        .about-lead {
+            font-size: clamp(1.08rem, 1.8vw, 1.25rem);
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+
+        .about-hero-actions {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .btn-primary-about {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--text-primary);
+            color: var(--bg-color);
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .btn-primary-about:hover {
+            background: var(--primary-color);
+            color: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 14px 30px rgba(252, 163, 17, 0.35);
+        }
+
+        .btn-outline-about {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: 2px solid var(--border-color);
+            background: transparent;
+            color: var(--text-primary);
+            padding: 12px 26px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .btn-outline-about:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            transform: translateY(-3px);
+            background: rgba(252, 163, 17, 0.06);
+        }
+
+        /* Hero Image Presentation */
+        .about-portrait-card {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .portrait-frame {
+            width: 100%;
+            max-width: 420px;
+            aspect-ratio: 4/5;
+            border-radius: 28px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.12);
+            background: var(--bg-secondary);
+            border: 6px solid #ffffff;
+        }
+
+        .portrait-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .portrait-frame:hover img {
+            transform: scale(1.04);
+        }
+
+        .location-floating-tag {
+            position: absolute;
+            bottom: -15px;
+            left: 20px;
+            background: #ffffff;
+            padding: 10px 20px;
+            border-radius: 50px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .location-floating-tag i {
+            color: var(--primary-color);
+        }
+
+        /* ── Personal Story Section ── */
+        .about-story-section {
+            padding: 80px 5%;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .about-story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(16px);
+            border-radius: 32px;
+            padding: 50px 60px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.04);
+        }
+
+        .story-content h2 {
+            font-size: clamp(2rem, 3.5vw, 2.6rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            line-height: 1.15;
+        }
+
+        .story-content h2 span {
+            color: var(--primary-color);
+        }
+
+        .story-content p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 18px;
+        }
+
+        .story-content p strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .story-highlight-box {
+            border-left: 4px solid var(--primary-color);
+            background: var(--bg-secondary);
+            padding: 18px 22px;
+            border-radius: 0 16px 16px 0;
+            margin: 24px 0 10px;
+            font-style: italic;
+            font-size: 1.05rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        /* Story Mini Photo Collage */
+        .story-visuals {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .story-photo-item {
+            border-radius: 20px;
+            overflow: hidden;
+            aspect-ratio: 1;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+            border: 3px solid #ffffff;
+            position: relative;
+        }
+
+        .story-photo-item.wide {
+            grid-column: span 2;
+            aspect-ratio: 16/9;
+        }
+
+        .story-photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .story-photo-item:hover img {
+            transform: scale(1.06);
+        }
+
+        /* ── Creative Perspectives (3 Simple Pillars) ── */
+        .pillars-section {
+            padding: 70px 5%;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .pillars-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 48px;
+        }
+
+        .pillars-header h2 {
+            font-size: clamp(2rem, 3.5vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+        }
+
+        .pillars-header h2 span {
+            color: var(--primary-color);
+        }
+
+        .pillars-header p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .pillar-card {
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid var(--border-color);
+            padding: 38px 32px;
+            border-radius: 24px;
+            transition: var(--transition);
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-6px);
+            background: #ffffff;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.07);
+            border-color: rgba(252, 163, 17, 0.3);
+        }
+
+        .pillar-icon {
+            width: 58px;
+            height: 58px;
+            border-radius: 16px;
+            background: rgba(252, 163, 17, 0.12);
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 22px;
+        }
+
+        .pillar-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .pillar-card p {
+            color: var(--text-secondary);
+            line-height: 1.68;
+            font-size: 0.95rem;
+        }
+
+
+        /* ── Simple CTA Box ── */
+        .about-cta-section {
+            padding: 80px 5%;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .about-cta-card {
+            background: var(--text-primary);
+            color: var(--bg-color);
+            border-radius: 32px;
+            padding: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            flex-wrap: wrap;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .about-cta-card h2 {
+            font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .about-cta-card h2 span {
+            color: var(--primary-color);
+        }
+
+        .about-cta-card p {
+            color: rgba(240, 237, 232, 0.7);
+            font-size: 1.05rem;
+            margin-top: 10px;
+        }
+
+        .about-cta-buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn-cta-gold {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--primary-color);
+            color: #ffffff;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .btn-cta-gold:hover {
+            background: var(--primary-color-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-cta-light {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: 2px solid rgba(240, 237, 232, 0.3);
+            color: var(--bg-color);
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .btn-cta-light:hover {
+            border-color: #ffffff;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+
+        /* Responsive Breakpoints */
+        @media (max-width: 992px) {
+            .about-hero {
+                grid-template-columns: 1fr;
+                gap: 50px;
+                padding-top: 120px;
+            }
+
+            .about-portrait-card {
+                order: -1;
+            }
+
+            .portrait-frame {
+                max-width: 320px;
+            }
+
+            .about-story-grid {
+                grid-template-columns: 1fr;
+                padding: 40px 30px;
+                gap: 40px;
+            }
+
+            .pillars-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-cta-card {
+                padding: 40px 30px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .about-hero {
+                padding: 100px 5% 50px;
+            }
+
+            .story-visuals {
+                grid-template-columns: 1fr;
+            }
+
+            .story-photo-item.wide {
+                grid-column: span 1;
+            }
+
+            .about-hero-actions,
+            .about-cta-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn-primary-about,
+            .btn-outline-about,
+            .btn-cta-gold,
+            .btn-cta-light {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body class="about-page-body">
+    <!-- Custom Cursor elements -->
+    <div class="cursor-dot" data-cursor-dot></div>
+    <div class="cursor-outline" data-cursor-outline></div>
+
+    <!-- Navigation Bar -->
+    <nav class="hero-navbar scrolled">
+        <div class="hero-nav-inner">
+            <a href="index.html" class="logo">HR<span>.</span></a>
+            <ul class="hero-nav-links">
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="index.html#works">Works</a></li>
+                <li><a href="resume.html" class="resume-btn">Resume</a></li>
+            </ul>
+            <div class="nav-right-actions">
+                <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <button class="hamburger" aria-label="Toggle navigation menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- ── Hero Section ── -->
+        <section class="about-hero">
+            <div class="about-hero-content">
+                <div class="about-pill-tag">
+                    <i class="fa-solid fa-sparkles"></i> Fashion Communication &amp; Visual Design
+                </div>
+                <h1 class="about-title">
+                    Hi, I'm<br><span>Hiran Ramesh</span>
+                </h1>
+                <p class="about-lead">
+                    A designer, creative thinker, and photographer based in Kasaragod, Kerala. Interested in how typography, composition, colour, and visual storytelling can turn ideas into meaningful communication.
+
+I approach each project by understanding the idea behind it and finding a visual direction that communicates it clearly and effectively. I enjoy exploring concepts, experimenting with different visual styles, and paying attention to the details that make a design feel distinctive.
+
+My work is driven by curiosity and a constant interest in learning, experimenting, and finding new ways to communicate through design. Outside design, I enjoy photography, music, games, and exploring different creative ideas.
+                </p>
+
+                <div class="about-hero-actions">
+                    <a href="index.html#works" class="btn-primary-about">
+                        <i class="fa-solid fa-arrow-left"></i> View My Works
+                    </a>
+                    <a href="resume.html" class="btn-outline-about">
+                        <i class="fa-solid fa-file-lines"></i> Open Resume
+                    </a>
+                    <a href="mailto:hiran5039ur7@gmail.com" class="btn-outline-about">
+                        <i class="fa-solid fa-envelope"></i> Contact Me
+                    </a>
+                </div>
+            </div>
+
+            <div class="about-portrait-card">
+                <div class="portrait-frame">
+                    <img src="DSC05626.webp" alt="Hiran Ramesh" loading="eager">
+                </div>
+                <div class="location-floating-tag">
+                    <i class="fa-solid fa-location-dot"></i> Kasaragod, Kerala, India
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- ── Hobbies Section ── -->
+        <section class="activities" id="hobbies">
+            <div class="hobbies-full">
+                <div class="section-header">
+                    <h2 class="section-title">My <span>Hobbies</span></h2>
+                    <p class="section-subtitle">life other than design</p>
+                </div>
+
+                <!-- Row 1 — Photography + Drawings (scrolls left) -->
+                <div class="movie-ticker-wrap" data-row-id="gallery-row1">
+                    <div class="movie-ticker">
+                        <div class="movie-card" data-full="photos/DSC00021.webp"><img src="photos/DSC00021.webp" alt="Photo 1" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC00067.webp"><img src="photos/DSC00067.webp" alt="Photo 2" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="drawing/1D.webp"><img src="drawing/1D.webp" alt="Drawing 1" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC00616.webp"><img src="photos/DSC00616.webp" alt="Photo 3" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC00865.JPG.webp"><img src="photos/DSC00865.JPG.webp" alt="Photo 4" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="drawing/2D.webp"><img src="drawing/2D.webp" alt="Drawing 2" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC00942.webp"><img src="photos/DSC00942.webp" alt="Photo 5" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC00976.webp"><img src="photos/DSC00976.webp" alt="Photo 6" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="drawing/3D.webp"><img src="drawing/3D.webp" alt="Drawing 3" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC00991.webp"><img src="photos/DSC00991.webp" alt="Photo 7" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC01111.webp"><img src="photos/DSC01111.webp" alt="Photo 8" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="drawing/4D.webp"><img src="drawing/4D.webp" alt="Drawing 4" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC01142.webp"><img src="photos/DSC01142.webp" alt="Photo 9" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC01248.webp"><img src="photos/DSC01248.webp" alt="Photo 10" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC01789.webp"><img src="photos/DSC01789.webp" alt="Photo 11" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC01792.webp"><img src="photos/DSC01792.webp" alt="Photo 12" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC01819.webp"><img src="photos/DSC01819.webp" alt="Photo 13" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC01822.webp"><img src="photos/DSC01822.webp" alt="Photo 14" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <!-- Duplicate for seamless loop -->
+                        <div class="movie-card" data-full="photos/DSC00021.webp"><img src="photos/DSC00021.webp" alt="Photo 1" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC00067.webp"><img src="photos/DSC00067.webp" alt="Photo 2" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="drawing/1D.webp"><img src="drawing/1D.webp" alt="Drawing 1" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC00616.webp"><img src="photos/DSC00616.webp" alt="Photo 3" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC00865.JPG.webp"><img src="photos/DSC00865.JPG.webp" alt="Photo 4" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="drawing/2D.webp"><img src="drawing/2D.webp" alt="Drawing 2" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC00942.webp"><img src="photos/DSC00942.webp" alt="Photo 5" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC00976.webp"><img src="photos/DSC00976.webp" alt="Photo 6" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="drawing/3D.webp"><img src="drawing/3D.webp" alt="Drawing 3" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC00991.webp"><img src="photos/DSC00991.webp" alt="Photo 7" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC01111.webp"><img src="photos/DSC01111.webp" alt="Photo 8" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="drawing/4D.webp"><img src="drawing/4D.webp" alt="Drawing 4" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC01142.webp"><img src="photos/DSC01142.webp" alt="Photo 9" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC01248.webp"><img src="photos/DSC01248.webp" alt="Photo 10" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC01789.webp"><img src="photos/DSC01789.webp" alt="Photo 11" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC01792.webp"><img src="photos/DSC01792.webp" alt="Photo 12" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC01819.webp"><img src="photos/DSC01819.webp" alt="Photo 13" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC01822.webp"><img src="photos/DSC01822.webp" alt="Photo 14" width="220" height="275" loading="lazy" decoding="async"></div>
+                    </div>
+                </div>
+
+                <!-- Row 2 — Photography + Drawings (scrolls right) -->
+                <div class="movie-ticker-wrap" data-row-id="gallery-row2">
+                    <div class="movie-ticker">
+                        <div class="movie-card" data-full="photos/DSC01297.webp"><img src="photos/DSC01297.webp" alt="Photo 15" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="drawing/5D.webp"><img src="drawing/5D.webp" alt="Drawing 5" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC01359.webp"><img src="photos/DSC01359.webp" alt="Photo 16" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC01403.webp"><img src="photos/DSC01403.webp" alt="Photo 17" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="drawing/6D.webp"><img src="drawing/6D.webp" alt="Drawing 6" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC01470.webp"><img src="photos/DSC01470.webp" alt="Photo 18" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC01477.webp"><img src="photos/DSC01477.webp" alt="Photo 19" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="drawing/7D.webp"><img src="drawing/7D.webp" alt="Drawing 7" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC01604.webp"><img src="photos/DSC01604.webp" alt="Photo 20" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC01620.webp"><img src="photos/DSC01620.webp" alt="Photo 21" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC01707.webp"><img src="photos/DSC01707.webp" alt="Photo 22" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC01746.webp"><img src="photos/DSC01746.webp" alt="Photo 23" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC01783.webp"><img src="photos/DSC01783.webp" alt="Photo 24" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC01940.webp"><img src="photos/DSC01940.webp" alt="Photo 25" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC01947.webp"><img src="photos/DSC01947.webp" alt="Photo 26" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC01949.webp"><img src="photos/DSC01949.webp" alt="Photo 27" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC02042.webp"><img src="photos/DSC02042.webp" alt="Photo 28" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC02095.webp"><img src="photos/DSC02095.webp" alt="Photo 29" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <!-- Duplicate for seamless loop -->
+                        <div class="movie-card" data-full="photos/DSC01297.webp"><img src="photos/DSC01297.webp" alt="Photo 15" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="drawing/5D.webp"><img src="drawing/5D.webp" alt="Drawing 5" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC01359.webp"><img src="photos/DSC01359.webp" alt="Photo 16" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC01403.webp"><img src="photos/DSC01403.webp" alt="Photo 17" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="drawing/6D.webp"><img src="drawing/6D.webp" alt="Drawing 6" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC01470.webp"><img src="photos/DSC01470.webp" alt="Photo 18" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC01477.webp"><img src="photos/DSC01477.webp" alt="Photo 19" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="drawing/7D.webp"><img src="drawing/7D.webp" alt="Drawing 7" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC01604.webp"><img src="photos/DSC01604.webp" alt="Photo 20" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC01620.webp"><img src="photos/DSC01620.webp" alt="Photo 21" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC01707.webp"><img src="photos/DSC01707.webp" alt="Photo 22" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC01746.webp"><img src="photos/DSC01746.webp" alt="Photo 23" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC01783.webp"><img src="photos/DSC01783.webp" alt="Photo 24" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC01940.webp"><img src="photos/DSC01940.webp" alt="Photo 25" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC01947.webp"><img src="photos/DSC01947.webp" alt="Photo 26" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC01949.webp"><img src="photos/DSC01949.webp" alt="Photo 27" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC02042.webp"><img src="photos/DSC02042.webp" alt="Photo 28" width="220" height="275" loading="lazy" decoding="async"></div>
+                        <div class="movie-card" data-full="photos/DSC02095.webp"><img src="photos/DSC02095.webp" alt="Photo 29" width="220" height="275" loading="lazy" decoding="async"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── Contact & Collaboration CTA ── -->
+        <section class="about-cta-section">
+            <div class="about-cta-card">
+                <div>
+                    <h2>Let's build something<br><span>meaningful together.</span></h2>
+                    <p>Have a project, opportunity, or creative idea? Feel free to reach out anytime.</p>
+                </div>
+                <div class="about-cta-buttons">
+                    <a href="mailto:hiran5039ur7@gmail.com" class="btn-cta-gold">
+                        <i class="fa-solid fa-envelope"></i> Send an Email
+                    </a>
+                    <a href="resume.html" class="btn-cta-light">
+                        <i class="fa-solid fa-file-lines"></i> View Detailed CV
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-logo">HR<span>.</span></div>
+            <div class="footer-social">
+                <a href="https://www.instagram.com/hiran_r_7" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/hiran-ramesh-b603812b6" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://www.behance.net/hiranramesh1" target="_blank" rel="noopener noreferrer" aria-label="Behance"><i class="fa-brands fa-behance"></i></a>
+            </div>
+            <div class="footer-email"><a href="mailto:hiran5039ur7@gmail.com"><i class="fa-solid fa-envelope"></i> hiran5039ur7@gmail.com</a></div>
+            <p class="copyright">&copy; 2026 Hiran Ramesh. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
