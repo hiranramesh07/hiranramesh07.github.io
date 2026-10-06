@@ -1218,6 +1218,32 @@ h4 {
     margin-bottom: 0;
 }
 
+.btn-resume-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 18px;
+    border-radius: 50px;
+    font-size: 0.84rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.btn-resume-action.primary {
+    background: var(--primary-color);
+    color: #111111;
+    border: 1px solid var(--primary-color);
+    box-shadow: 0 4px 12px rgba(252, 163, 17, 0.25);
+}
+
+.btn-resume-action.primary:hover {
+    background: var(--primary-color-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(252, 163, 17, 0.35);
+}
+
 .resume-status-badge {
     display: inline-flex;
     align-items: center;
@@ -2414,6 +2440,12 @@ html.theme-transition *:after {
 
 [data-theme="dark"] .timeline-item {
     border-bottom-color: var(--border-color);
+}
+
+[data-theme="dark"] .btn-resume-action.primary {
+    background: var(--primary-color);
+    color: #111111;
+    border-color: var(--primary-color);
 }
 
 [data-theme="dark"] .btn-resume-action.secondary {
