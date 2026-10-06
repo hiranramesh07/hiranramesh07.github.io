@@ -4,3 +4,8 @@
 # Temporary text extracts
 decompressed_pdf.txt
 pdf_text.txt
+
+# Sensitive files
+github/
+*recovery*
+*.txt

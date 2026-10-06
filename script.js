@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
-    // --- SVG Blob Lag-Chain Engine ---
+    // --- SVG Blob Lag-Chain Engine (Desktop & Mobile Optimized) ---
     (function () {
         const svg  = document.getElementById('hero-blob-svg');
         const hero = document.querySelector('.hero');
@@ -68,6 +68,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!svg || !hero) return; // Guard clause if elements don't exist on page
         const N    = 10;
         const VW   = 1440, VH = 900;
+
+        const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || window.matchMedia('(pointer: coarse)').matches;
+        const isMobileScreen = () => window.innerWidth <= 768;
 
         const blobs = [
             { id: 'hero-mask-a', lag: 0.22, minR: 78, maxR: 100, spd: 0.00055, phase: 0.0 },
@@ -94,67 +97,122 @@ document.addEventListener('DOMContentLoaded', () => {
         let velX = 0, velY = 0;
         let prevX = rawX, prevY = rawY;
 
-        // ── Auto-play state ───────────────────────────────────────────────
-        let autoPlay   = true;   // true during the 5-second intro
-        let autoEndTimer = setTimeout(() => {
-            autoPlay = false;
-            svg.style.opacity = '0';
-        }, 5000);
+        // Always keep visible on mobile/touch, auto-play active
+        let autoPlay = true;
+        let isUserInteracting = false;
+        let resumeAutoTimer = null;
 
         // Kick off: blobs visible immediately
         svg.style.opacity = '1';
 
-        // ── Smooth figure-8 intro path ────────────────────────────────────
-        // Drives a virtual cursor so the chain sweeps through the hero naturally
+        // ── Auto-move with viewport-aware boundaries ───────────────────────
         function autoMove(t) {
-            const s  = t * 0.00065;               // slow time scale
-            const nx = VW * 0.5 + VW * 0.32 * Math.sin(s * 1.0);
-            const ny = VH * 0.5 + VH * 0.28 * Math.sin(s * 1.7 + 0.8);
+            const r = hero.getBoundingClientRect();
+            const elemW = r.width || VW;
+            const elemH = r.height || VH;
+            // Visible slice scaling
+            const scale = Math.max(elemW / VW, elemH / VH);
+            const visibleW = elemW / scale;
+            const visibleH = elemH / scale;
+
+            // Constrain oscillation so blob stays completely inside visible mobile screen
+            const ampX = Math.min(visibleW * 0.32, VW * 0.30);
+            const ampY = Math.min(visibleH * 0.26, VH * 0.25);
+
+            const s  = t * 0.0007;
+            const nx = VW * 0.5 + ampX * Math.sin(s * 1.0);
+            const ny = VH * 0.5 + ampY * Math.sin(s * 1.6 + 0.8);
             velX = nx - rawX;
             velY = ny - rawY;
             prevX = rawX; prevY = rawY;
             rawX = nx;    rawY = ny;
         }
 
-        // ── Coordinate conversion ─────────────────────────────────────────
+        // ── Slice-aware coordinate conversion ─────────────────────────────
         function toSVG(px, py) {
             const r = hero.getBoundingClientRect();
+            const elemW = r.width || 1;
+            const elemH = r.height || 1;
+            const scale = Math.max(elemW / VW, elemH / VH);
+            const renderedW = VW * scale;
+            const renderedH = VH * scale;
+            const offsetX = (elemW - renderedW) * 0.5;
+            const offsetY = (elemH - renderedH) * 0.5;
+
             return {
-                x: ((px - r.left) / r.width)  * VW,
-                y: ((py - r.top)  / r.height) * VH
+                x: ((px - r.left) - offsetX) / scale,
+                y: ((py - r.top)  - offsetY) / scale
             };
         }
 
-        // ── Mouse events (cancel auto-play when user takes over) ──────────
-        let isMouseInHero = false;
-
-        function initUserControl(e) {
-            if (!isMouseInHero) {
-                isMouseInHero = true;
-                clearTimeout(autoEndTimer);
-                autoPlay = false;
-                const p = toSVG(e.clientX, e.clientY);
-                rawX = p.x; rawY = p.y; prevX = p.x; prevY = p.y;
-                svg.style.opacity = '1';
-            }
+        // ── Interaction Handlers ──────────────────────────────────────────
+        function onPointerStart(px, py) {
+            isUserInteracting = true;
+            autoPlay = false;
+            clearTimeout(resumeAutoTimer);
+            svg.style.opacity = '1';
+            const p = toSVG(px, py);
+            rawX = p.x; rawY = p.y;
+            prevX = p.x; prevY = p.y;
+            velX = 0; velY = 0;
         }
 
-        hero.addEventListener('mouseenter', initUserControl);
-        hero.addEventListener('mousemove', initUserControl);
-
-        hero.addEventListener('mouseleave', () => {
-            isMouseInHero = false;
-            svg.style.opacity = '0';
-        });
-
-        window.addEventListener('mousemove', e => {
-            if (autoPlay) return; // ignore mouse while intro runs
-            const p = toSVG(e.clientX, e.clientY);
+        function onPointerMove(px, py) {
+            if (!isUserInteracting && autoPlay) {
+                // If desktop mouse moved over hero
+                isUserInteracting = true;
+                autoPlay = false;
+            }
+            svg.style.opacity = '1';
+            const p = toSVG(px, py);
             velX = p.x - prevX;
             velY = p.y - prevY;
             prevX = rawX; prevY = rawY;
             rawX = p.x;   rawY = p.y;
+        }
+
+        function onPointerEnd() {
+            isUserInteracting = false;
+            // Seamlessly resume ambient animation so screen is never dead
+            clearTimeout(resumeAutoTimer);
+            resumeAutoTimer = setTimeout(() => {
+                autoPlay = true;
+            }, 800);
+        }
+
+        // Desktop Mouse Listeners
+        hero.addEventListener('mouseenter', e => {
+            onPointerStart(e.clientX, e.clientY);
         });
+
+        hero.addEventListener('mousemove', e => {
+            onPointerMove(e.clientX, e.clientY);
+        });
+
+        hero.addEventListener('mouseleave', () => {
+            onPointerEnd();
+        });
+
+        // Mobile Touch Listeners (passive for smooth non-blocking scrolling)
+        hero.addEventListener('touchstart', e => {
+            if (e.touches && e.touches.length > 0) {
+                onPointerStart(e.touches[0].clientX, e.touches[0].clientY);
+            }
+        }, { passive: true });
+
+        hero.addEventListener('touchmove', e => {
+            if (e.touches && e.touches.length > 0) {
+                onPointerMove(e.touches[0].clientX, e.touches[0].clientY);
+            }
+        }, { passive: true });
+
+        hero.addEventListener('touchend', () => {
+            onPointerEnd();
+        }, { passive: true });
+
+        hero.addEventListener('touchcancel', () => {
+            onPointerEnd();
+        }, { passive: true });
 
         // ── Path builder ──────────────────────────────────────────────────
         function buildPath(b, t) {
@@ -166,14 +224,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const vAngle  = Math.atan2(bvy, bvx);
             const pts     = [];
 
+            const radiusMult = isMobileScreen() ? 0.9 : 1.0;
+
             for (let i = 0; i < N; i++) {
                 const angle = (i / N) * Math.PI * 2 - Math.PI / 2;
-                const r = b.minR + (b.maxR - b.minR) * 0.5 * (
+                const r = (b.minR + (b.maxR - b.minR) * 0.5 * (
                     1
                     + 0.50 * Math.sin(t * b.spd       + angle * 1.3 + b.phase)
                     + 0.30 * Math.sin(t * b.spd * 1.8 + angle * 2.1 + b.phase * 0.7)
                     + 0.20 * Math.sin(t * b.spd * 2.9 + angle * 0.9 + b.phase * 1.5)
-                );
+                )) * radiusMult;
                 const elongate = stretch * Math.cos(angle - vAngle);
                 pts.push({
                     x: b.cx + (r + elongate) * Math.cos(angle),

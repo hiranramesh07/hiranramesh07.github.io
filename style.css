@@ -385,7 +385,9 @@ h4 {
     pointer-events: none;
     z-index: 1;
     opacity: 0;
-    transition: opacity 0.15s ease-in, opacity 0.6s ease-out;
+    transition: opacity 0.3s ease;
+    will-change: transform, opacity;
+    transform: translateZ(0);
 }
 
 /* Magnetic Hover Utilities */
@@ -1043,6 +1045,10 @@ h4 {
     /* Hero section mobile */
     .hero {
         padding: 100px 20px 120px;
+    }
+
+    #hero-blob-svg {
+        opacity: 1 !important;
     }
 
     .hero-name {
